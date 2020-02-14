@@ -1,6 +1,11 @@
-const anagrams = require('./anagrams.json')
+'use strict'
 
-module.exports = function (word) {
-  if (!word || !word.length) return null
-  return anagrams[word.toLowerCase().split('').sort().join('')]
+var sort = require('./sort')
+var map = require('./anagrams.json')
+
+module.exports = anagrams
+
+function anagrams(word) {
+  if (!word || word.length === 0) return null
+  return map[sort(word.toLowerCase())]
 }

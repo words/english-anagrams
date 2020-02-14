@@ -1,17 +1,22 @@
-require('chai').should()
-const {describe, it} = require('mocha')
-const anagrams = require('.')
+'use strict'
 
-describe('anagrams', () => {
-  it('accepts a word and returns an array of anagrams', () => {
-    const words = anagrams('nerdish')
-    words.should.be.an('array')
-    words.should.include('nerdish')
-    words.should.include('shrined')
-    words.should.include('hinders')
-  })
+var test = require('tape')
+var anagrams = require('.')
 
-  it('returns null for words with no anagrams', () => {
-    (typeof anagrams('kjsdofisdufs')).should.eq('undefined')
-  })
+test('anagrams', function(t) {
+  t.deepEqual(
+    anagrams('nerdish'),
+    ['hinders', 'nerdish', 'shrined'],
+    'should return a list of anagrams'
+  )
+
+  t.equal(
+    anagrams('kjsdofisdufs'),
+    undefined,
+    'should return null for words with no anagrams'
+  )
+
+  t.equal(anagrams(), null, 'should return null if no value is given')
+
+  t.end()
 })

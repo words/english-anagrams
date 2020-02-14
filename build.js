@@ -1,24 +1,18 @@
-const path = require('path')
-const fs = require('fs')
+var fs = require('fs')
+var words = require('an-array-of-english-words')
+var sort = require('./sort')
 
-const words = require('./words.json')
-  .map(word => {
-    return {
-      orig: word,
-      sorted: word.split('').sort().join('')
-    }
-  })
+var results = {}
 
-const results = {}
+var all = words.map(word => ({orig: word, sorted: sort(word)}))
 
-words.forEach(word => {
-  const sorted = word.sorted
+all.forEach(word => {
+  var sorted = word.sorted
+  var anagrams
 
   if (results[sorted]) return
 
-  const anagrams = words
-    .filter(word => word.sorted === sorted)
-    .map(word => word.orig)
+  anagrams = words.filter(word => word.sorted === sorted).map(word => word.orig)
 
   if (anagrams.length > 1) {
     results[sorted] = anagrams
@@ -26,7 +20,4 @@ words.forEach(word => {
   }
 })
 
-fs.writeFileSync(
-  path.join(__dirname, 'anagrams.json'),
-  JSON.stringify(results, null, 2)
-)
+fs.writeFileSync('anagrams.json', JSON.stringify(results, null, 2) + '\n')

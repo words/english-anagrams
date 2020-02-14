@@ -1,20 +1,58 @@
 {
   "name": "english-anagrams",
-  "description": "Find anagrams for English words. Works offline.",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Find anagrams for English words",
   "license": "MIT",
-  "repository": "https://github.com/words/english-anagrams",
+  "keywords": [
+    "array",
+    "list",
+    "english",
+    "words",
+    "word"
+  ],
+  "repository": "words/english-anagrams",
+  "bugs": "https://github.com/words/english-anagrams/issues",
+  "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+  "contributors": [
+    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
+  "main": "index.js",
+  "files": [
+    "anagrams.json",
+    "sort.js",
+    "index.js"
+  ],
+  "dependencies": {},
   "devDependencies": {
-    "an-array-of-english-words": "^1.2.2",
-    "chai": "^4.1.2",
-    "mocha": "^3.5.3",
-    "standard": "^10.0.3",
-    "standard-markdown": "^4.0.2"
+    "an-array-of-english-words": "^1.0.0",
+    "prettier": "^1.0.0",
+    "remark-cli": "^7.0.0",
+    "remark-preset-wooorm": "^6.0.0",
+    "tape": "^4.0.0",
+    "xo": "^0.26.0"
   },
   "scripts": {
-    "build": "node build.js",
-    "render": "node render.js",
-    "test": "mocha && standard --fix && standard-markdown"
+    "generate": "node build",
+    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+    "test-api": "node test",
+    "test": "npm run format && npm run test-api"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "prettier": true,
+    "esnext": false
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }
