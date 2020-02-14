@@ -5,7 +5,9 @@ var map = require('./anagrams.json')
 
 module.exports = anagrams
 
+var own = {}.hasOwnProperty
+
 function anagrams(word) {
-  if (!word || word.length === 0) return null
-  return map[sort(word.toLowerCase())]
+  var sorted = sort(word)
+  return own.call(map, sorted) ? map[sorted] : []
 }

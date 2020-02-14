@@ -10,13 +10,17 @@ test('anagrams', function(t) {
     'should return a list of anagrams'
   )
 
-  t.equal(
+  t.deepEqual(
     anagrams('kjsdofisdufs'),
-    undefined,
-    'should return null for words with no anagrams'
+    [],
+    'should return an empty array for words with no anagrams'
   )
 
-  t.equal(anagrams(), null, 'should return null if no value is given')
+  t.deepEqual(
+    anagrams(),
+    [],
+    'should return an empty array if no value is given'
+  )
 
   t.end()
 })

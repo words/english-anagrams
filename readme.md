@@ -20,20 +20,23 @@ npm install english-anagrams
 ```js
 var anagrams = require('english-anagrams')
 
-anagrams('nerdish')
+console.log(anagrams('nerdish'))
+console.log(anagrams('kjsdofisdufs'))
 ```
 
 Yields:
 
 ```js
 ['hinders', 'nerdish', 'shrined']
+[]
 ```
 
 ## API
 
 ### `englishAnagrams(word)`
 
-Given a word, I’ll give you a list of anagrams, when available.
+Given a word, I’ll give you a list of anagrams, or an empty array if no anagrams
+were found.
 
 ## License
 
