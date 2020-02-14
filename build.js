@@ -2,22 +2,26 @@ var fs = require('fs')
 var words = require('an-array-of-english-words')
 var sort = require('./sort')
 
-var results = {}
+var own = {}.hasOwnProperty
 
-var all = words.map(word => ({orig: word, sorted: sort(word)}))
+var all = {}
+var anagrams = {}
 
-all.forEach(word => {
-  var sorted = word.sorted
-  var anagrams
+words.forEach(word => {
+  var sorted = sort(word)
 
-  if (results[sorted]) return
+  if (!own.call(all, sorted)) {
+    all[sorted] = []
+  }
 
-  anagrams = words.filter(word => word.sorted === sorted).map(word => word.orig)
+  all[sorted].push(word)
+})
 
-  if (anagrams.length > 1) {
-    results[sorted] = anagrams
-    console.log(anagrams.join(', '))
+Object.keys(all).forEach(sorted => {
+  if (all[sorted].length !== 1) {
+    anagrams[sorted] = all[sorted]
+    console.log(all[sorted])
   }
 })
 
-fs.writeFileSync('anagrams.json', JSON.stringify(results, null, 2) + '\n')
+fs.writeFileSync('anagrams.json', JSON.stringify(anagrams, null, 2) + '\n')
