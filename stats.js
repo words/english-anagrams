@@ -72,9 +72,10 @@ function stats() {
         u('listItem', [
           u(
             'paragraph',
-            [].concat(
+            [].concat.apply(
+              [],
               u('text', 'Longest group of anagrams:\n'),
-              anagrams[longest].flatMap((d, i) => {
+              anagrams[longest].map((d, i) => {
                 var node = u('strong', [u('text', d)])
                 return i ? [u('text', ', '), node] : [node]
               })
