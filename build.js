@@ -19,7 +19,7 @@ words.forEach(word => {
 
 Object.keys(all).forEach(sorted => {
   if (all[sorted].length !== 1) {
-    anagrams[sorted] = all[sorted]
+    anagrams[sorted] = all[sorted].sort((a, b) => a.localeCompare(b))
     console.log(all[sorted])
   }
 })
