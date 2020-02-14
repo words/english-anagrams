@@ -1,6 +1,7 @@
 # english-anagrams
 
 [![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
@@ -87,6 +88,10 @@ were found.
 [build-badge]: https://img.shields.io/travis/words/english-anagrams.svg
 
 [build]: https://travis-ci.org/words/english-anagrams
+
+[coverage-badge]: https://img.shields.io/codecov/c/github/words/english-anagrams.svg
+
+[coverage]: https://codecov.io/github/words/english-anagrams
 
 [downloads-badge]: https://img.shields.io/npm/dm/english-anagrams.svg
 
