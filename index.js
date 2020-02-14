@@ -8,6 +8,10 @@ module.exports = anagrams
 var own = {}.hasOwnProperty
 
 function anagrams(word) {
-  var sorted = sort(word)
-  return own.call(map, sorted) ? map[sorted] : []
+  var normalized = word ? String(word).toLowerCase() : ''
+  var sorted = sort(normalized)
+  return own.call(map, sorted) ? map[sorted].filter(notSelf) : []
+  function notSelf(anagram) {
+    return anagram !== normalized
+  }
 }

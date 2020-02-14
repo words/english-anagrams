@@ -6,7 +6,7 @@ var anagrams = require('.')
 test('anagrams', function(t) {
   t.deepEqual(
     anagrams('nerdish'),
-    ['hinders', 'nerdish', 'shrined'],
+    ['hinders', 'shrined'],
     'should return a list of anagrams'
   )
 

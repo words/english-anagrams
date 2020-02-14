@@ -27,7 +27,7 @@ console.log(anagrams('kjsdofisdufs'))
 Yields:
 
 ```js
-['hinders', 'nerdish', 'shrined']
+['hinders', 'shrined']
 []
 ```
 
